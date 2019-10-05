@@ -1,0 +1,18 @@
+{
+  "name": "pixi-event-manager",
+  "version": "0.0.1",
+  "description": "event observer for pixi",
+  "main": "index.js",
+  "repository": "git@gitlab.com:evjonell/pixi-event-manager.git",
+  "author": "erika jonell <erika.jonell@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "parcel ./src/index.html -p 3000"
+  },
+  "devDependencies": {
+    "parcel": "^1.12.3"
+  },
+  "dependencies": {
+    "pixi.js": "^5.1.5"
+  }
+}
