@@ -7,12 +7,20 @@
   "author": "erika jonell <erika.jonell@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "parcel ./src/index.html -p 3000"
+    "start": "parcel serve ./src/index.html -p 3000"
   },
   "devDependencies": {
+    "@babel/core": "^7.6.2",
+    "@babel/preset-env": "^7.6.2",
+    "core-js": "^3.2.1",
     "parcel": "^1.12.3"
   },
   "dependencies": {
     "pixi.js": "^5.1.5"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
   }
 }
