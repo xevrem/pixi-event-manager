@@ -20,7 +20,7 @@ window.addEventListener('load', ()=>{
     resolution: window.devicePixelRatio || 1,
   });
 
-  InteractionTracker.init(app.renderer.plugins.interaction);
+  const tracker = new InteractionTracker(app.renderer.plugins.interaction);
 
   main.append(app.view);
 
@@ -54,7 +54,7 @@ const InteractionData = (id) => ({
 });
 
 class InteractionTracker {
-  static init(interactionManager, stage){
+  constructor(interactionManager, stage){
     //hook into the IM
     this.__IM = interactionManager;
     this.__IM.on('pointerdown', this.globalWatch, {context:this, event:'pointerdown'});
@@ -70,7 +70,7 @@ class InteractionTracker {
     this.__lastInteractive = null;
   }
 
-  static globalWatch(event){
+  globalWatch(event){
     // test to see if there is anything here
     const result = this.context.__IM.hitTest(event.data.global, this.context.__stage);
     this.context.update(event, result, this.event);
@@ -78,7 +78,7 @@ class InteractionTracker {
   };
 
 
-  static update(event, entity, baseEvent){
+  update(event, entity, baseEvent){
     if(entity){
       // this is a DisplayObject
       if(!this.__interactions.hasOwnProperty(entity.__id)){
@@ -93,7 +93,7 @@ class InteractionTracker {
     this.__lastInteractive = entity;
   }
 
-  static getInteractions(){
+  get interactions(){
     return this.__interactions;
   }
 }
